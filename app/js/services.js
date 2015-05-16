@@ -142,7 +142,7 @@ angular.module('OneDayTrip.services', []).
                 "trips": [
                     {
                         "id": 1,
-                        "duration": null,
+                        "duration": '12h',
                         "totalCost": 500,
                         "attractions": [
                             {
