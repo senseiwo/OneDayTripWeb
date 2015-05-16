@@ -21,15 +21,13 @@
           center: { lat: -34.397, lng: 150.644},
           zoom: 8
         };
-        var map = new google.maps.Map(document.getElementById('trip-map'),
-            mapOptions);
+        var map = new google.maps.Map(document.getElementById('trip-map'), mapOptions);
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-  
   </head>
   <body>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"/>
@@ -59,7 +57,7 @@
                     <label class="control-label">Topics</label>
                     <select multiple class="form-control">
                         <option>History</option>
-                        <option>shopping</option>
+                        <option>Shopping</option>
                     </select>
                 </div>
             </div>
@@ -88,7 +86,7 @@
         </div>
         <hr>
         
-        <div class="row">
+        <div class="row main-content">
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">My trip</div>
@@ -98,11 +96,15 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div id="trip-map" style="min-height: 700px;">
-                    
-                </div>
+                <div id="trip-map" style="min-height: 380px;"></div>
             </div>
         </div>
     </div>
+  
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Plan your trip with one-click created with love :)</p>
+      </div>
+    </footer>
   </body>
 </html>
