@@ -137,6 +137,47 @@ angular.module('OneDayTrip.services', []).
   })
   .factory('oneDayTripFakeData',function(){
       var data = {
+          getFakeTrips: function() {
+            var trips = {
+                "trips": [
+                    {
+                        "id": 1,
+                        "duration": '12h',
+                        "totalCost": '500',
+                        "attractions": [
+                            {
+                                "order": 1,
+                                "name": null,
+                                "imageURL": null,
+                                "rating": 0,
+                                "timing": 0,
+                                "price": null,
+                                "attractionType": null,
+                                "coordinate": {
+                                    "xCoordinate": "47.6677292",
+                                    "yCoordinate": "-122.37728820000001"
+                                }
+                            },
+                            {
+                                "order": 2,
+                                "name": null,
+                                "imageURL": null,
+                                "rating": 0,
+                                "timing": 0,
+                                "price": null,
+                                "attractionType": null,
+                                "coordinate": {
+                                    "xCoordinate": "32.715738",
+                                    "yCoordinate": "-117.16108380000003"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            };
+            
+            return trips;
+        },
           getFakePoints: function() {
             var points = [
                 {
