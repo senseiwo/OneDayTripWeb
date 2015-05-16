@@ -57,7 +57,10 @@ angular.module('OneDayTrip.controllers', [])
             });
             
         })
+    }
 
+    $scope.test = function() {
+        console.log("ev: " + $event)
     }
 })
 .controller('mapController',function($scope, oneDayTripMapApi,start_coord){

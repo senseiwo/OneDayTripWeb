@@ -9,6 +9,7 @@
     </style>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlajl3PZJqKw3hsOqHFwog04U1wsHS_Jw"></script>
     
@@ -77,11 +78,28 @@
         
         <div class="row main-content">
             <div class="col-md-4">
-		<div class="list-group" ng-controller="tripsController">
+		        <div class="list-group" ng-controller="tripsController">
                    <a href="#" class="list-group-item active">My Trips</a>
-  		   <a href="#" ng-repeat="trip in tripList" class="list-group-item">
-                       {{trip.name}}
-                   </a>
+  		            <li href="#" ng-repeat="trip in tripList" class="list-group-item">
+                        <!--table><tr><td ng-repeat="point in trip.points">{{point.type}}</td></tr></table-->
+                        <table class="table table-condensed">
+                            <tr>
+                                <td ng-repeat="point in trip.points">
+                                    <table>
+                                        <tr>
+                                            <td colspan="2"><i class="fa fa-bus"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Price: {{point.price}}RMB</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duration: {{point.duration}}</td>
+                                        </tr>
+                                     </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
                 </div>
             </div>
             <div class="col-md-8" ng-controller="mapController">
