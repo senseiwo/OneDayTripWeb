@@ -1,5 +1,5 @@
 angular.module('OneDayTrip.controllers', [])
-.controller('tripsController', function($scope, oneDayTripHook,oneDayTripFakeData) {
+.controller('tripsController', function($scope, oneDayTripHook) {
     oneDayTripHook.register('data_arrived',function(data){
         $scope.tripList = data;
         return true;
