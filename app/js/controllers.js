@@ -73,3 +73,5 @@ angular.module('OneDayTrip.controllers', [])
         oneDayTripMapApi.setCurrentCoordinates(start_coord);
     }
 })
+.controller('tripDetailsController', function($scope, oneDayTripHook){
+})
