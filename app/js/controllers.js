@@ -40,7 +40,8 @@ angular.module('OneDayTrip.controllers', [])
             topics.push(val.key);
         });
         
-        oneDayTripHook.call('data_arrived',oneDayTripFakeData.getFakePoints());
+        var result = oneDayTripFakeData.getFakeTrips();
+        oneDayTripHook.call('data_arrived',result.trips);
         
         oneDayTripMapApi.getLocationNameByCoordinate(start_coord,function(result){
             var query = oneDayTripUtils.buildQueryString({
