@@ -66,7 +66,7 @@ angular.module('OneDayTrip.controllers', [])
         return true;
     });
     
-    $scope.initMap = function(coord){
+    $scope.initMap = function(){
         oneDayTripMapApi.setCurrentCoordinates(start_coord);
     }
 })
