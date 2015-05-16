@@ -30,7 +30,7 @@
     </script>
   </head>
 
-  <body ng-app="OneDayTripApp" ng-controller="tripsController">
+  <body ng-app="OneDayTripApp">
       <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -45,14 +45,12 @@
       </div>
     </nav>
     <div class="container">
-        <div class="row">
+        <div class="row" ng-controller="paramsController">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Activities</label>
                     <select class="form-control">
-                        <option>Low</option>
-                        <option>Mid</option>
-                        <option>High</option>
+                        <option ng-repeat="activity in activities" value="{{activity.text}}">{{activity.text}}</option>
                     </select>
                 </div>
             </div>
@@ -92,9 +90,11 @@
         
         <div class="row main-content">
             <div class="col-md-4">
-		<div class="list-group">
+		<div class="list-group" ng-controller="tripsController">
                    <a href="#" class="list-group-item active">My Trips</a>
-  		   <a href="#" ng-repeat="trip in tripList" class="list-group-item">{{trip.name}}</a>
+  		   <a href="#" ng-repeat="trip in tripList" class="list-group-item">
+                       {{trip.name}}
+                   </a>
                 </div>
             </div>
             <div class="col-md-8">
