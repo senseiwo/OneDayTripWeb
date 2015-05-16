@@ -80,7 +80,8 @@ angular.module('OneDayTrip.controllers', [])
 })
 .controller('tripDetailsController', function($scope, oneDayTripHook){
     oneDayTripHook.register('trip_clicked',function(attractions){
-            $scope.attractions=attractions
+            $scope.attractions = attractions
+            $scope.visible = attractions.length;
             return true;
     });
 })

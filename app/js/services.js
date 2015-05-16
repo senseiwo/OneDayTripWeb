@@ -152,7 +152,7 @@ angular.module('OneDayTrip.services', []).
                                 "rating": 0,
                                 "timing": 0,
                                 "price": null,
-                                "attractionType": null,
+                                "attractionType": "CODING",
                                 "coordinate": {
                                     "xCoordinate": "113.955133",
                                     "yCoordinate": "22.533188"
@@ -165,7 +165,7 @@ angular.module('OneDayTrip.services', []).
                                 "rating": 3,
                                 "timing": 4,
                                 "price": 500,
-                                "attractionType": "SHOPPING",
+                                "attractionType": "EATING",
                                 "coordinate": {
                                     "xCoordinate": "113.957307",
                                     "yCoordinate": "22.530676"
@@ -185,7 +185,7 @@ angular.module('OneDayTrip.services', []).
                                 "rating": 0,
                                 "timing": 0,
                                 "price": null,
-                                "attractionType": null,
+                                "attractionType": "RELAX",
                                 "coordinate": {
                                     "xCoordinate": "113.955133",
                                     "yCoordinate": "22.533188"
@@ -193,7 +193,7 @@ angular.module('OneDayTrip.services', []).
                             },
                             {
                                 "order": 2,
-                                "name": "Coco park",
+                                "name": "Walmart",
                                 "imageURL": "http://startinchina.com/shenzhen/shopping/coco_park.html",
                                 "rating": 3,
                                 "timing": 4,
