@@ -1,7 +1,7 @@
 angular.module('OneDayTrip.controllers', [])
-.controller('tripsController', function($scope, oneDayTripService,oneTripFakeData) {
+.controller('tripsController', function($scope, oneTripHttpApi,oneTripFakeData) {
 
-    oneDayTripService.getTrips().success(function(resp) {
+    oneTripHttpApi.getTrips().success(function(resp) {
         //$scope = response.???? 
     })
     $scope.tripList = oneTripFakeData.getFakePoints();

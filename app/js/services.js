@@ -1,18 +1,18 @@
 angular.module('OneDayTrip.services', []).
-  factory('oneDayTripService', function($http) {
+  factory('oneTripHttpApi', function($http) {
 
-    var tripApi = {};
+    var http = {};
 
-    tripApi.getTrips = function() {
+    http.getTrips = function() {
       return $http({
         method: 'GET',
         url: 'url'
       });
     }
     
-    return tripApi;
+    return http;
   })
-  .factory('oneTripMepApi', function(){
+  .factory('oneTripMapApi', function(){
       
   })
   .factory('oneTripUtils',function(){
