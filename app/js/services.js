@@ -137,6 +137,47 @@ angular.module('OneDayTrip.services', []).
   })
   .factory('oneDayTripFakeData',function(){
       var data = {
+          getFakeTrips: function() {
+            var trips = {
+                "trips": [
+                    {
+                        "id": 1,
+                        "duration": '12h',
+                        "totalCost": 500,
+                        "attractions": [
+                            {
+                                "order": 1,
+                                "name": 'Epam',
+                                "imageURL": null,
+                                "rating": 0,
+                                "timing": 0,
+                                "price": null,
+                                "attractionType": null,
+                                "coordinate": {
+                                    "xCoordinate": "113.955133",
+                                    "yCoordinate": "22.533188"
+                                }
+                            },
+                            {
+                                "order": 2,
+                                "name": "Coco park",
+                                "imageURL": "http://startinchina.com/shenzhen/shopping/coco_park.html",
+                                "rating": 3,
+                                "timing": 4,
+                                "price": 500,
+                                "attractionType": "SHOPPING",
+                                "coordinate": {
+                                    "xCoordinate": "113.957307",
+                                    "yCoordinate": "22.530676"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            };
+            
+            return trips;
+        },
           getFakePoints: function() {
             var points = [
                 {
