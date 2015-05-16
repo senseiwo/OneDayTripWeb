@@ -24,3 +24,11 @@
   margin: 20px 0;
 }
 
+.trips-list table{
+    font-size:12px;
+}
+
+.trips-list table tbody td{
+    border-top:none;
+}
+
