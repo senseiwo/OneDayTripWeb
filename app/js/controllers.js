@@ -1,9 +1,9 @@
 angular.module('OneDayTrip.controllers', [])
 .controller('tripsController', function($scope, oneDayTripHttpApi,oneDayTripFakeData) {
 
-    oneDayTripHttpApi.getTrips().success(function(resp) {
-        //$scope = response.???? 
-    })
+//    oneDayTripHttpApi.getTrips().success(function(resp) {
+//        //$scope = response.????
+//    })
     $scope.tripList = oneDayTripFakeData.getFakePoints();
     
   }
@@ -11,7 +11,9 @@ angular.module('OneDayTrip.controllers', [])
 .controller('paramsController',function($scope, oneDayTripData, 
                                                 oneDayTripUtils,
                                                 start_coord,
-                                                oneDayTripMapApi){
+                                                oneDayTripContext,
+                                                oneDayTripMapApi,
+                                                oneDayTripFakeData){
     
     $scope.activities = oneDayTripData.getActivities();
     $scope.topics = oneDayTripData.getTopics();
@@ -31,7 +33,7 @@ angular.module('OneDayTrip.controllers', [])
         }
     }
     
-    $scope.getTrips = function(){
+    $scope.getTrips = function() {
         var activity = $scope.activity.key;
         var budgets = [$scope.budget_from || 0,$scope.budget_to || 0];
         
@@ -41,7 +43,9 @@ angular.module('OneDayTrip.controllers', [])
         });
 
         var data = oneDayTripFakeData.getFakePoints();
+        oneDayTripContext.setCurrentTrips(data);
         console.log(data)
+        drawRoute(data)
 
         oneDayTripMapApi.getLocationNameByCoordinate(start_coord,function(result){
             var query = oneDayTripUtils.buildQueryString({

@@ -12,6 +12,18 @@ angular.module('OneDayTrip.services', []).
     
     return http;
   })
+  .factory('oneDayTripContext',function(){
+     var ctx={};
+     ctx.setCurrentTrips=function(data){
+        this.curTrips=data;
+     }
+
+     ctx.getCurrentTrips=function(){
+        return this.curTrips;
+     }
+
+     return ctx;
+  })
   .factory('oneDayTripMapApi', function(){
       geocoder = new google.maps.Geocoder();
       

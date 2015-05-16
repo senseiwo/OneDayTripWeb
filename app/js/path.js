@@ -1,8 +1,9 @@
 
-function drawRoute(points) {
-    var startPoint = points[0]
-    var endPoint = points[points.length-1]
-    console.log("Start: " + startPoint + ", End: " + endPoint)
+function drawRoute(trips) {
+    var startPoint = trips[0].points[0]
+    var len = trips[0].points.length
+    var endPoint = trips[0].points[len-1]
+    console.log("Start: " + startPoint.coordinate.lat + ", End: " + endPoint.coordinate.lat)
 }
 
 function initialize() {
