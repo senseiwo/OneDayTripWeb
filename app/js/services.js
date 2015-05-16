@@ -14,11 +14,11 @@ angular.module('OneDayTrip.services', []).
   })
   .factory('oneDayTripContext',function(){
      var ctx={};
-     ctx.setCurrentTrips=function(data){
-        this.curTrips=data;
+     ctx.setCurrentTrips = function(data){
+        this.curTrips = data;
      }
 
-     ctx.getCurrentTrips=function(){
+     ctx.getCurrentTrips = function(){
         return this.curTrips;
      }
 
@@ -29,7 +29,9 @@ angular.module('OneDayTrip.services', []).
       
       var mapApi = {
           el:document.getElementById('trip-map'),
-          zooming:8
+          zooming:8,
+          directionService: new google.maps.DirectionsService(),
+          directionRenderer: new google.maps.DirectionsRenderer( {'draggable':true} )
       };
       
       mapApi.getLocationNameByCoordinate = function(coords,callback){
@@ -43,11 +45,40 @@ angular.module('OneDayTrip.services', []).
         });
       }
       
+      mapApi.drawPaths = function(coords){
+          mapApi.getLocationNameByCoordinate(coords[0], function(origin){
+              mapApi.getLocationNameByCoordinate(coords[coords.length -1], function(destination){
+                  var points = [];
+                  for ( var i=1; i<coords.length-1; i++ ) 
+                  {
+                      points.push({
+                          location:new google.maps.LatLng(coords[i].lat,coords[i].lng),
+                          stopover:true
+                      });
+                  }
+                  var request = {
+                    origin: origin,
+                    destination: destination,
+                    waypoints: points,
+                    optimizeWaypoints: true,
+                    travelMode: google.maps.TravelMode.DRIVING
+                  };
+                  mapApi.directionService.route(request, function(res, stat) {
+                    if (stat === google.maps.DirectionsStatus.OK) {
+                        mapApi.directionRenderer.setDirections(res); 
+                    }
+                  });
+              })
+          }) 
+      }
+      
       mapApi.setCurrentCoordinates = function(coord){
-          var map = new google.maps.Map(mapApi.el, {
-                center: { lat: coord.lat, lng: coord.lng},
+          mapApi.map = new google.maps.Map(mapApi.el, {
+                center: coord,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
                 zoom: mapApi.zooming
           });
+          mapApi.directionRenderer.setMap( mapApi.map);
       }
       
       return mapApi;

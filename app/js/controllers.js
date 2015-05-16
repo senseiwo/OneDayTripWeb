@@ -41,12 +41,15 @@ angular.module('OneDayTrip.controllers', [])
         angular.forEach($scope.selected_topics, function(val){
             topics.push(val.key);
         });
-
-        var data = oneDayTripFakeData.getFakePoints();
-        oneDayTripContext.setCurrentTrips(data);
-        console.log(data)
-        drawRoute(data)
-
+        
+        var coords = [
+              { lat: 47.6677292, lng: -122.37728820000001},
+              { lat: 42.496403, lng: -124.413128},
+              { lat: 32.715738, lng: -117.16108380000003}
+          ];
+        
+        oneDayTripMapApi.drawPaths(coords);
+        
         oneDayTripMapApi.getLocationNameByCoordinate(start_coord,function(result){
             var query = oneDayTripUtils.buildQueryString({
                 activity:activity,
