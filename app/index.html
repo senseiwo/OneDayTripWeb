@@ -30,7 +30,7 @@
     </script>
   </head>
 
-  <body ng-app="OneDayTripApp" ng-controller="tripsController">
+  <body ng-app="OneDayTripApp">
       <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -45,24 +45,17 @@
       </div>
     </nav>
     <div class="container">
-        <div class="row">
+        <div class="row" ng-controller="paramsController">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Activities</label>
-                    <select class="form-control">
-                        <option>Low</option>
-                        <option>Mid</option>
-                        <option>High</option>
-                    </select>
+                    <select class="form-control" ng-model="activity" ng-options="activity.text for activity in activities"></select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Topics</label>
-                    <select multiple class="form-control">
-                        <option>History</option>
-                        <option>Shopping</option>
-                    </select>
+                    <select multiple class="form-control" ng-model="topic" ng-options="topic.text for topic in topics"></select>
                 </div>
             </div>
             
@@ -70,21 +63,21 @@
                 <div class="form-group">
                     <label class="control-label">Budget</label>
                     <label>
-                        <input type="checkbox"> Free
+                        <input type="checkbox" ng-model="checked" ng-click="setFreeBudget(checked)"> Free
                     </label>
                 </div>
                 <div class="form-group col-md-6 no-p-left">
                     <label class="control-label">From</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-disabled="checked" ng-model="budget_from">
                 </div>
                 <div class="form-group col-md-6">
                     <label class="control-label">To</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-disabled="checked" ng-model="budget_to">
                 </div>
             </div>
             
             <div class="col-md-4 left">
-                <button class="btn btn-success" type="button">Get my trip!</button>
+                <button class="btn btn-success" type="button" ng-click="getTrips()">Get my trip!</button>
                 <button class="btn btn btn-warning" type="button">Reset</button>
             </div>
         </div>
@@ -92,9 +85,11 @@
         
         <div class="row main-content">
             <div class="col-md-4">
-		<div class="list-group">
+		<div class="list-group" ng-controller="tripsController">
                    <a href="#" class="list-group-item active">My Trips</a>
-  		   <a href="#" ng-repeat="trip in tripList" class="list-group-item">{{trip.name}}</a>
+  		   <a href="#" ng-repeat="trip in tripList" class="list-group-item">
+                       {{trip.name}}
+                   </a>
                 </div>
             </div>
             <div class="col-md-8">
