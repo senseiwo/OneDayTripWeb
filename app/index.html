@@ -49,17 +49,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Activities</label>
-                    <select class="form-control">
-                        <option ng-repeat="activity in activities" value="{{activity.text}}" key="{{activity.key}}">{{activity.text}}</option>
-                    </select>
+                    <select class="form-control" ng-model="activity" ng-options="activity.text for activity in activities"></select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Topics</label>
-                    <select multiple class="form-control">
-                        <option ng-repeat="topic in topics" value="{{topic.text}}" key="{{topic.key}}">{{topic.text}}</option>
-                    </select>
+                    <select multiple class="form-control" ng-model="topic" ng-options="topic.text for topic in topics"></select>
                 </div>
             </div>
             
@@ -67,21 +63,21 @@
                 <div class="form-group">
                     <label class="control-label">Budget</label>
                     <label>
-                        <input type="checkbox" ng-model="checked"> Free
+                        <input type="checkbox" ng-model="checked" ng-click="setFreeBudget(checked)"> Free
                     </label>
                 </div>
                 <div class="form-group col-md-6 no-p-left">
                     <label class="control-label">From</label>
-                    <input type="text" class="form-control" ng-disabled="checked">
+                    <input type="text" class="form-control" ng-disabled="checked" ng-model="budget_from">
                 </div>
                 <div class="form-group col-md-6">
                     <label class="control-label">To</label>
-                    <input type="text" class="form-control" ng-disabled="checked">
+                    <input type="text" class="form-control" ng-disabled="checked" ng-model="budget_to">
                 </div>
             </div>
             
             <div class="col-md-4 left">
-                <button class="btn btn-success" type="button">Get my trip!</button>
+                <button class="btn btn-success" type="button" ng-click="getTrips()">Get my trip!</button>
                 <button class="btn btn btn-warning" type="button">Reset</button>
             </div>
         </div>
