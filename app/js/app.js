@@ -1,1 +1,1 @@
-angular.module('OneDayTripApp', ['OneDayTrip.controllers']);
+angular.module('OneDayTripApp', ['OneDayTrip.controllers','OneDayTrip.services']);
