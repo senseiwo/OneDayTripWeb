@@ -4,5 +4,6 @@ angular.module('OneDayTrip.controllers', []).
       {name: "trip1"},
       {name: "trip2"}
     ];
+    $scope.nameapp="hello"
   }
 )
