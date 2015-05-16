@@ -10,12 +10,12 @@ angular.module('OneDayTrip.controllers', [])
     ];
   }
 )
-.controller('paramsController',function($scope){
+.controller('paramsController',function($scope,oneDayTripService){
     
     $scope.activities=[
-        {'key':1,'text':'Low'},
-        {'key':2,'text':'Mid'},
-        {'key':3,'text':'High'}
+        {'key':'L','text':'Low'},
+        {'key':'M','text':'Mid'},
+        {'key':'H','text':'High'}
     ];
     
     $scope.topics=[
@@ -24,7 +24,7 @@ angular.module('OneDayTrip.controllers', [])
     ];
      
     $scope.activity = $scope.activities[0];
-    $scope.topic = $scope.topics[0];
+    $scope.selected_topics = [$scope.topics[0]];
     $scope.budget_from = 0;
     $scope.budget_to = 500;
     
@@ -39,6 +39,18 @@ angular.module('OneDayTrip.controllers', [])
     }
     
     $scope.getTrips = function(){
+        var activity = $scope.activity.key;
+        var budgets = [$scope.budget_from || 0,$scope.budget_to || 0];
         
+        var topics = [];
+        angular.forEach($scope.selected_topics, function(val){
+            topics.push( val.text);
+        });
+        
+        var query= oneDayTripService.buildQueryString({
+            activity:activity,
+            topics:topics.join(','),
+            budget:budgets.join(',')
+        });
     }
 })

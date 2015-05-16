@@ -9,6 +9,25 @@ angular.module('OneDayTrip.services', []).
         url: 'url'
       });
     }
+    
+    tripApi.buildQueryString=function(data){
+        if ( ! angular.isObject( data ) ) { 
+            return( ( data === null ) ? "" : data.toString() ); 
+        }
+        var buffer = [];
+        for ( var name in data ) 
+        { 
+            if ( ! data.hasOwnProperty( name ) ) { 
+                continue; 
+            }
+            var value = data[ name ];
 
+            buffer.push(
+                encodeURIComponent( name ) + "=" + encodeURIComponent( ( value === null ) ? "" : value )
+            ); 
+        }
+        return buffer.join( "&" ).replace( /%20/g, "+" );
+    }
+    
     return tripApi;
   });
