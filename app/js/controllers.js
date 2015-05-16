@@ -8,7 +8,10 @@ angular.module('OneDayTrip.controllers', [])
     
   }
 )
-.controller('paramsController',function($scope, oneDayTripData, oneDayTripUtils){
+.controller('paramsController',function($scope, oneDayTripData, 
+                                                oneDayTripUtils,
+                                                start_coord,
+                                                oneDayTripMapApi){
     
     $scope.activities = oneDayTripData.getActivities();
     $scope.topics = oneDayTripData.getTopics();
@@ -37,16 +40,21 @@ angular.module('OneDayTrip.controllers', [])
             topics.push(val.key);
         });
         
-        var query = oneDayTripUtils.buildQueryString({
-            activity:activity,
-            topics:topics.join(','),
-            budget:budgets.join(',')
-        });
+        oneDayTripMapApi.getLocationNameByCoordinate(start_coord,function(result){
+            var query = oneDayTripUtils.buildQueryString({
+                activity:activity,
+                startPointName:result,
+                coordinates:[start_coord.lat,start_coord.lng].join(','),
+                topics:topics.join(','),
+                budget:budgets.join(',')
+            });
+            
+        })
         
     }
 })
-.controller('mapController',function($scope, oneDayTripMapApi){
+.controller('mapController',function($scope, oneDayTripMapApi,start_coord){
     $scope.initMap = function(coord){
-        oneDayTripMapApi.setCurrentCoordinates(coord);
+        oneDayTripMapApi.setCurrentCoordinates(start_coord);
     }
 })
