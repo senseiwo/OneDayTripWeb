@@ -75,7 +75,14 @@ angular.module('OneDayTrip.controllers', [])
     oneDayTripHook.register('trip_clicked',function(attractions){
             $scope.attractions = attractions
             $scope.visible = attractions.length;
-
             return true;
     });
+    $scope.attractionClicked = function(data){
+            oneDayTripHook.call('attraction_clicked',data);
+        }
+})
+.controller('tripAttractionPoint', function($scope, oneDayTripHook) {
+    oneDayTripHook.register('attraction_clicked', function(attraction){
+        $scope.attraction=attraction
+    })
 })

@@ -19,7 +19,6 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
-    
   </head>
 
   <body ng-app="OneDayTripApp">
@@ -86,27 +85,50 @@
             </div>
             <div class="col-md-8">
                 <div id="trip-map" style="min-height: 380px;" ng-controller="mapController" ng-init="initMap()"></div>
+
                 <table class="table table-striped" ng-show="visible" ng-controller="tripDetailsController">
                     <tr>
                         <td>Name</td>
-                        <td>Type</td>
+                        <td>pic</td>
                         <td>Rating</td>
                         <td>Price</td>
-                        <td>Cost</td>
+                        <td>Duration</td>
+                        <td></td>
                     </tr>
                     <tr ng-repeat="attraction in attractions">
                         <td>{{attraction.name}}</td>
-                        <td>{{attraction.attractionType}}</td>
+                        <td><img src="{{attraction.imageURL}}" alt="Lamp" width="50" height="50"></td>
                         <td>{{attraction.rating}}</td>
                         <td>{{attraction.price}}</td>
                         <td>{{attraction.timing}}</td>
+                        <td><button class="btn btn-default" type="submit" data-toggle="modal" data-target="#exampleModal" ng-click="attractionClicked(attraction)">More</button></td>
                     </tr>
                 </table>
             </div>
 
         </div>
     </div>
-  
+
+    <div id="exampleModal" class="modal fade" ng-controller="tripAttractionPoint">
+        <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">{{attraction.name}}</h4>
+                  </div>
+                  <div class="modal-body">
+                      <p>Type: {{attraction.attractionType}}</p>
+                      <p>Price: {{attraction.price}}</p>
+                      <p>Duration: {{attraction.timing}}</p>
+                      <p>Rating: {{attraction.rating}}</p>
+                      <img src="{{attraction.imageURL}}" alt="Lamp" width="300" height="300">
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+        </div>
+    </div>
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Plan your trip with one-click created with love :)</p>

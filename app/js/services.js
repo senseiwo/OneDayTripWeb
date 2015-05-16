@@ -143,7 +143,7 @@ angular.module('OneDayTrip.services', []).
       }
       return data;
   })
-  .factory('oneDayTripFakeData',function(){
+  .factory('oneDayTripFakeData2',function(){
       var data = {
           getFakeTrips: function() {
             var trips = {
@@ -202,7 +202,7 @@ angular.module('OneDayTrip.services', []).
                             {
                                 "order": 2,
                                 "name": "Walmart",
-                                "imageURL": "http://startinchina.com/shenzhen/shopping/coco_park.html",
+                                "imageURL": "http://upload.wikimedia.org/wikipedia/commons/1/1a/COCO_Park_Enterance.jpg",
                                 "rating": 3,
                                 "timing": 4,
                                 "price": 500,
@@ -221,4 +221,13 @@ angular.module('OneDayTrip.services', []).
         }
     }
     return data;
+  })
+  .factory('oneDayTripFakeData',function(){
+                var data = {
+                    getFakeTrips: function() {
+                      var trips = {"trips":[{"id":1,"duration":"12h","totalCost":900,"attractions":[{"order":1,"name":"Xiao Ben Bake Restourant","imageURL":"http://i1.s2.dpfile.com/pc/12b25724dee7fbc23a992b9e5c08343b%28700x700%29/thumb.jpg","rating":3,"timing":1,"price":50,"attractionType":"RESTAURANT","coordinate":{"xCoordinate":"113.95203","yCoordinate":"22.531359"}},{"order":2,"name":"Costal city","imageURL":"http://img3.fengniao.com/album/upload/2/269/53735/10746969.jpg","rating":4,"timing":3,"price":600,"attractionType":"SHOPPING","coordinate":{"xCoordinate":"113.941446","yCoordinate":"22.523238"}},{"order":3,"name":"Li Xiang Park","imageURL":"http://www.hqcyw.cn/Uploads/2014050809483601.jpg","rating":5,"timing":1,"price":150,"attractionType":"PARK","coordinate":{"xCoordinate":"113.936094","yCoordinate":"22.541765"}},{"order":4,"name":"A She Dong Ting Restaurant","imageURL":"http://s3-media2.fl.yelpcdn.com/bphoto/vD_pIgdac01qaQqSTp92pg/348s.jpg","rating":3,"timing":1,"price":100,"attractionType":"RESTAURANT","coordinate":{"xCoordinate":"113.976205","yCoordinate":"22.549906"}}]},{"id":2,"duration":"4h","totalCost":1610,"attractions":[{"order":1,"name":"Window Of The World","imageURL":"http://www.alltrip.cn/UploadFile/CityImages_34556.jpg","rating":3,"timing":2,"price":200,"attractionType":"PARK","coordinate":{"xCoordinate":"113.979491","yCoordinate":"22.54078"}},{"order":2,"name":"Happy Valley","imageURL":"http://www.517dv.com/upload/custom/00/00/00/00/88/92.1.jpg","rating":3,"timing":2,"price":210,"attractionType":"PARK","coordinate":{"xCoordinate":"113.98675","yCoordinate":"22.546722"}},{"order":3,"name":"Happy Harbour","imageURL":"http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1204/21/c4/11326725_11326725_1334983441409_mthumb.jpg","rating":4,"timing":2,"price":500,"attractionType":"SHOPPING","coordinate":{"xCoordinate":"113.998133","yCoordinate":"22.529523"}},{"order":4,"name":"Coco park","imageURL":"http://www.shenzhentour.com/UserFiles/Image/3%2813%29.jpg","rating":3,"timing":4,"price":500,"attractionType":"SHOPPING","coordinate":{"xCoordinate":"114.060326","yCoordinate":"22.540385"}},{"order":5,"name":"Nan Tou Gu Cheng Museum","imageURL":"http://www.china.com.cn/ch-pic/guangdong/zm/070418_1350/135.jpg","rating":4,"timing":1,"price":200,"attractionType":"HISTORY","coordinate":{"xCoordinate":"113.927084","yCoordinate":"22.546596"}}]}]}
+                        return trips
+                    }
+      }
+      return data
   })
