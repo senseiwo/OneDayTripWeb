@@ -16,4 +16,9 @@ angular.module('OneDayTrip.controllers', [])
         {'key':2,'text':'Mid'},
         {'key':3,'text':'High'}
     ];
+    
+    $scope.topics=[
+        {'key':1,'text':'History'},
+        {'key':2,'text':'Shopping'}
+    ];
 })

@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label class="control-label">Activities</label>
                     <select class="form-control">
-                        <option ng-repeat="activity in activities" value="{{activity.text}}">{{activity.text}}</option>
+                        <option ng-repeat="activity in activities" value="{{activity.text}}" key="{{activity.key}}">{{activity.text}}</option>
                     </select>
                 </div>
             </div>
@@ -58,8 +58,7 @@
                 <div class="form-group">
                     <label class="control-label">Topics</label>
                     <select multiple class="form-control">
-                        <option>History</option>
-                        <option>Shopping</option>
+                        <option ng-repeat="topic in topics" value="{{topic.text}}" key="{{topic.key}}">{{topic.text}}</option>
                     </select>
                 </div>
             </div>
@@ -68,16 +67,16 @@
                 <div class="form-group">
                     <label class="control-label">Budget</label>
                     <label>
-                        <input type="checkbox"> Free
+                        <input type="checkbox" ng-model="checked"> Free
                     </label>
                 </div>
                 <div class="form-group col-md-6 no-p-left">
                     <label class="control-label">From</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-disabled="checked">
                 </div>
                 <div class="form-group col-md-6">
                     <label class="control-label">To</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-disabled="checked">
                 </div>
             </div>
             
