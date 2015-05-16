@@ -66,8 +66,8 @@ angular.module('OneDayTrip.services', []).
           },
           getTopics:function(){
              return [
-                        {'key':1,'text':'History'},
-                        {'key':2,'text':'Shopping'}
+                        {'key':'HISTORY','text':'History'},
+                        {'key':'SHOPPING','text':'Shopping'}
                     ];
           }
       }

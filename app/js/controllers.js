@@ -34,14 +34,15 @@ angular.module('OneDayTrip.controllers', [])
         
         var topics = [];
         angular.forEach($scope.selected_topics, function(val){
-            topics.push( val.text);
+            topics.push(val.key);
         });
         
-        var query= oneDayTripUtils.buildQueryString({
+        var query = oneDayTripUtils.buildQueryString({
             activity:activity,
             topics:topics.join(','),
             budget:budgets.join(',')
         });
+        
     }
 })
 .controller('mapController',function($scope, oneDayTripMapApi){
