@@ -12,6 +12,9 @@ angular.module('OneDayTrip.services', []).
     
     return tripApi;
   })
+  .factory('oneTripMepApi', function(){
+      
+  })
   .factory('oneTripUtils',function(){
       var utils = {};
       
