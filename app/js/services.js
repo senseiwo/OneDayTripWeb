@@ -12,17 +12,27 @@ angular.module('OneDayTrip.services', []).
     
     return http;
   })
-  .factory('oneDayTripContext',function(){
-     var ctx={};
-     ctx.setCurrentTrips = function(data){
-        this.curTrips = data;
-     }
-
-     ctx.getCurrentTrips = function(){
-        return this.curTrips;
-     }
-
-     return ctx;
+  .factory('oneDayTripHook',function(){
+      var hook = {
+            hooks: [],
+            register: function ( name, callback ) {
+                if('undefined' === typeof( hook.hooks[name])){
+                    hook.hooks[name] = [];
+                }     
+                hook.hooks[name].push( callback )
+            },
+            call: function ( name, args ) {
+                if( 'undefined' !== typeof( hook.hooks[name] ) ){
+                    for( i = 0; i < hook.hooks[name].length; ++i ){
+                        if( true !== hook.hooks[name][i]( args ) ) 
+                        { 
+                           break; 
+                        }
+                    }
+                }    
+            }
+        }
+        return hook;
   })
   .factory('oneDayTripMapApi', function(){
       geocoder = new google.maps.Geocoder();
