@@ -43,10 +43,7 @@ angular.module('OneDayTrip.controllers', [])
         angular.forEach($scope.selected_topics, function(val){
             topics.push(val.key);
         });
-        
-        var result = oneDayTripFakeData.getFakeTrips();
-        oneDayTripHook.call('data_arrived',result.trips);
-        
+
         oneDayTripMapApi.getLocationNameByCoordinate(start_coord,function(result){
             var query = oneDayTripUtils.buildQueryString({
                 activity:activity,
@@ -56,12 +53,8 @@ angular.module('OneDayTrip.controllers', [])
                 budget:budgets.join(',')
             });
             
-            var coords = [
-              { lat: 47.6677292, lng: -122.37728820000001},
-              { lat: 42.496403,  lng: -124.413128},
-              { lat: 32.715738,  lng: -117.16108380000003}
-            ];
-            oneDayTripMapApi.drawPaths(coords);
+            var result = oneDayTripFakeData.getFakeTrips();
+            oneDayTripHook.call('data_arrived',result.trips);
         })
     }
 
@@ -69,14 +62,18 @@ angular.module('OneDayTrip.controllers', [])
         console.log("ev: " + $event)
     }
 })
-.controller('mapController',function($scope,oneDayTripHook, oneDayTripMapApi,start_coord){    
+.controller('mapController',function($scope, oneDayTripHook, start_coord,oneDayTripUtils, oneDayTripMapApi){
+    oneDayTripHook.register('trip_clicked',function(attractions){
+        oneDayTripMapApi.drawPaths(oneDayTripUtils.getCoordsFromAttr(attractions));
+        return true;
+    }); 
     $scope.initMap = function(){
         oneDayTripMapApi.setCurrentCoordinates(start_coord);
     }
 })
 .controller('tripDetailsController', function($scope, oneDayTripHook){
     oneDayTripHook.register('trip_clicked',function(attractions){
-            $scope.attractions=attractions
+            $scope.attractions = attractions
             return true;
     });
 })
