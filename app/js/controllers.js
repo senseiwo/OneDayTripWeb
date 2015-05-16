@@ -69,11 +69,7 @@ angular.module('OneDayTrip.controllers', [])
         console.log("ev: " + $event)
     }
 })
-.controller('mapController',function($scope,oneDayTripHook, oneDayTripMapApi,start_coord){
-    oneDayTripHook.register('data_arrived',function(data){
-        return true;
-    });
-    
+.controller('mapController',function($scope,oneDayTripHook, oneDayTripMapApi,start_coord){    
     $scope.initMap = function(){
         oneDayTripMapApi.setCurrentCoordinates(start_coord);
     }

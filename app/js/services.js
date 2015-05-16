@@ -96,7 +96,7 @@ angular.module('OneDayTrip.services', []).
   .factory('oneDayTripUtils',function(){
       var utils = {};
       
-      utils.buildQueryString=function(data){
+      utils.buildQueryString = function(data){
         if ( ! angular.isObject( data ) ) { 
             return( ( data === null ) ? "" : data.toString() ); 
         }
@@ -114,8 +114,15 @@ angular.module('OneDayTrip.services', []).
         }
         return buffer.join( "&" ).replace( /%20/g, "+" );
     }
+    
+    utils.getCoordsFromResponse = function(trips){
+        var coords = [];
+        angular.forEach(trips.attractions, function(attr){
+            coords.push(attr.coordinate);
+        })
+    }
       
-      return utils;
+    return utils;
   })
   .factory('oneDayTripData',function(){
       var data={
