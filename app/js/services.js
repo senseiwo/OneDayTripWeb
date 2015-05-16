@@ -10,7 +10,12 @@ angular.module('OneDayTrip.services', []).
       });
     }
     
-    tripApi.buildQueryString=function(data){
+    return tripApi;
+  })
+  .factory('oneTripUtils',function(){
+      var utils = {};
+      
+      utils.buildQueryString=function(data){
         if ( ! angular.isObject( data ) ) { 
             return( ( data === null ) ? "" : data.toString() ); 
         }
@@ -28,8 +33,8 @@ angular.module('OneDayTrip.services', []).
         }
         return buffer.join( "&" ).replace( /%20/g, "+" );
     }
-    
-    return tripApi;
+      
+      return utils;
   })
   .factory('oneTripData',function(){
       var data={

@@ -8,7 +8,7 @@ angular.module('OneDayTrip.controllers', [])
     
   }
 )
-.controller('paramsController',function($scope,oneDayTripService, oneTripData){
+.controller('paramsController',function($scope, oneDayTripService, oneTripData, oneTripUtils){
     
     $scope.activities = oneTripData.getActivities();
     $scope.topics = oneTripData.getTopics();
@@ -37,7 +37,7 @@ angular.module('OneDayTrip.controllers', [])
             topics.push( val.text);
         });
         
-        var query= oneDayTripService.buildQueryString({
+        var query= oneTripUtils.buildQueryString({
             activity:activity,
             topics:topics.join(','),
             budget:budgets.join(',')
