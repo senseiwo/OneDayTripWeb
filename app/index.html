@@ -79,26 +79,9 @@
             <div class="col-md-4">
 		        <div class="list-group" ng-controller="tripsController">
                    <a href="#" class="list-group-item active">My Trips</a>
-  		            <li href="#" ng-repeat="trip in tripList" class="list-group-item trips-list">
-                        <!--table><tr><td ng-repeat="point in trip.points">{{point.type}}</td></tr></table-->
-                        <table class="table table-condensed">
-                            <tr>
-                                <td ng-repeat="point in trip.points">
-                                    <table>
-                                        <tr>
-                                            <td colspan="2"><i class="fa fa-bus"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Price: {{point.price}}RMB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Duration: {{point.duration}}</td>
-                                        </tr>
-                                     </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
+                   <a ng-repeat="trip in tripList" class="list-group-item trips-list" ng-click="tripClicked(trip.attractions)">
+                       Price: {{trip.totalCost}} Duration: {{trip.duration}}
+                   </a>
                 </div>
             </div>
             <div class="col-md-8">

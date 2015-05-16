@@ -4,6 +4,10 @@ angular.module('OneDayTrip.controllers', [])
         $scope.tripList = data;
         return true;
     });
+
+    $scope.tripClicked = function(data){
+        oneDayTripHook.call('trip_clicked',data);
+    }
   }
 )
 .controller('paramsController',function($scope, oneDayTripData, 
@@ -75,4 +79,8 @@ angular.module('OneDayTrip.controllers', [])
     }
 })
 .controller('tripDetailsController', function($scope, oneDayTripHook){
+    oneDayTripHook.register('trip_clicked',function(attractions){
+            $scope.attractions=attractions
+            return true;
+    });
 })

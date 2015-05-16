@@ -172,6 +172,39 @@ angular.module('OneDayTrip.services', []).
                                 }
                             }
                         ]
+                    },
+                    {
+                        "id": 2,
+                        "duration": '6h',
+                        "totalCost": 200,
+                        "attractions": [
+                            {
+                                "order": 1,
+                                "name": 'Park',
+                                "imageURL": null,
+                                "rating": 0,
+                                "timing": 0,
+                                "price": null,
+                                "attractionType": null,
+                                "coordinate": {
+                                    "xCoordinate": "113.955133",
+                                    "yCoordinate": "22.533188"
+                                }
+                            },
+                            {
+                                "order": 2,
+                                "name": "Coco park",
+                                "imageURL": "http://startinchina.com/shenzhen/shopping/coco_park.html",
+                                "rating": 3,
+                                "timing": 4,
+                                "price": 500,
+                                "attractionType": "SHOPPING",
+                                "coordinate": {
+                                    "xCoordinate": "113.957307",
+                                    "yCoordinate": "22.530676"
+                                }
+                            }
+                        ]
                     }
                 ]
             };
