@@ -44,3 +44,8 @@ angular.module('OneDayTrip.controllers', [])
         });
     }
 })
+.controller('mapController',function($scope, oneDayTripMapApi){
+    $scope.initMap = function(){
+        oneDayTripMapApi.setCurrentCoordinates({ lat: -34.397, lng: 150.644});
+    }
+})

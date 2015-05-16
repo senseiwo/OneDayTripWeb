@@ -13,7 +13,23 @@ angular.module('OneDayTrip.services', []).
     return http;
   })
   .factory('oneDayTripMapApi', function(){
+      var mapApi = {
+          el:document.getElementById('trip-map'),
+          zooming:8
+      };
       
+      mapApi.getLocationNameByCoordinate = function(coordinates){
+          
+      }
+      
+      mapApi.setCurrentCoordinates = function(coord){
+          var map = new google.maps.Map(mapApi.el, {
+                center: { lat: coord.lat, lng: coord.lng},
+                zoom: mapApi.zooming
+          });
+      }
+      
+      return mapApi;
   })
   .factory('oneDayTripUtils',function(){
       var utils = {};

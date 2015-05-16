@@ -10,24 +10,14 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlajl3PZJqKw3hsOqHFwog04U1wsHS_Jw"></script>
+    
     <script src="libs/jquery-1.11.3.min.js"></script>
     <script src="libs/bootstrap.min.js"></script>
     <script src="libs/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
-    
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlajl3PZJqKw3hsOqHFwog04U1wsHS_Jw"></script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: { lat: -34.397, lng: 150.644},
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('trip-map'), mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
   </head>
 
   <body ng-app="OneDayTripApp">
@@ -92,8 +82,8 @@
                    </a>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div id="trip-map" style="min-height: 380px;"></div>
+            <div class="col-md-8" ng-controller="mapController">
+                <div id="trip-map" style="min-height: 380px;" ng-init="initMap()"></div>
             </div>
         </div>
     </div>
