@@ -1,5 +1,5 @@
 angular.module('OneDayTrip.services', []).
-  factory('oneTripHttpApi', function($http) {
+  factory('oneDayTripHttpApi', function($http) {
 
     var http = {};
 
@@ -12,10 +12,10 @@ angular.module('OneDayTrip.services', []).
     
     return http;
   })
-  .factory('oneTripMapApi', function(){
+  .factory('oneDayTripMapApi', function(){
       
   })
-  .factory('oneTripUtils',function(){
+  .factory('oneDayTripUtils',function(){
       var utils = {};
       
       utils.buildQueryString=function(data){
@@ -39,7 +39,7 @@ angular.module('OneDayTrip.services', []).
       
       return utils;
   })
-  .factory('oneTripData',function(){
+  .factory('oneDayTripData',function(){
       var data={
           getActivities:function(){
               return [
@@ -57,7 +57,7 @@ angular.module('OneDayTrip.services', []).
       }
       return data;
   })
-  .factory('oneTripFakeData',function(){
+  .factory('oneDayTripFakeData',function(){
       var data={
           getFakePoints: function() {
             var points = [

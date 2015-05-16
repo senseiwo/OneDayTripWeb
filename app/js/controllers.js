@@ -1,17 +1,17 @@
 angular.module('OneDayTrip.controllers', [])
-.controller('tripsController', function($scope, oneTripHttpApi,oneTripFakeData) {
+.controller('tripsController', function($scope, oneDayTripHttpApi,oneDayTripFakeData) {
 
-    oneTripHttpApi.getTrips().success(function(resp) {
+    oneDayTripHttpApi.getTrips().success(function(resp) {
         //$scope = response.???? 
     })
-    $scope.tripList = oneTripFakeData.getFakePoints();
+    $scope.tripList = oneDayTripFakeData.getFakePoints();
     
   }
 )
-.controller('paramsController',function($scope, oneDayTripService, oneTripData, oneTripUtils){
+.controller('paramsController',function($scope, oneDayTripData, oneDayTripUtils){
     
-    $scope.activities = oneTripData.getActivities();
-    $scope.topics = oneTripData.getTopics();
+    $scope.activities = oneDayTripData.getActivities();
+    $scope.topics = oneDayTripData.getTopics();
      
     $scope.activity = $scope.activities[0];
     $scope.selected_topics = [$scope.topics[0]];
@@ -37,7 +37,7 @@ angular.module('OneDayTrip.controllers', [])
             topics.push( val.text);
         });
         
-        var query= oneTripUtils.buildQueryString({
+        var query= oneDayTripUtils.buildQueryString({
             activity:activity,
             topics:topics.join(','),
             budget:budgets.join(',')
