@@ -3,6 +3,9 @@
   <head>
     <style type="text/css">
       html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+      body {
+        padding-top: 60px;
+      }
     </style>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -27,7 +30,34 @@
       </div>
     </nav>
     <div class="container">
-        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Activities</label>
+                    <select class="form-control">
+                        <option>Low</option>
+                        <option>Mid</option>
+                        <option>High</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Topics</label>
+                    <select multiple class="form-control">
+                        <option>History</option>
+                        <option>shopping</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Budget</label>
+                    
+                </div>
+            </div>
+        </div>
     </div>
   </body>
 </html>
