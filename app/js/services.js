@@ -95,7 +95,7 @@ angular.module('OneDayTrip.services', []).
       return data;
   })
   .factory('oneDayTripFakeData',function(){
-      var data={
+      var data = {
           getFakePoints: function() {
             var points = [
                 {

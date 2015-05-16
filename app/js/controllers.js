@@ -55,7 +55,6 @@ angular.module('OneDayTrip.controllers', [])
                 topics:topics.join(','),
                 budget:budgets.join(',')
             });
-            
         })
 
     }
