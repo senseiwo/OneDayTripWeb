@@ -13,7 +13,32 @@ angular.module('OneDayTrip.services', []).
     return http;
   })
   .factory('oneDayTripMapApi', function(){
+      geocoder = new google.maps.Geocoder();
       
+      var mapApi = {
+          el:document.getElementById('trip-map'),
+          zooming:8
+      };
+      
+      mapApi.getLocationNameByCoordinate = function(coords,callback){
+          var latlng = new google.maps.LatLng(coords.lat, coords.lng);
+          geocoder.geocode({'latLng': latlng}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+             if (results[1]) {
+                callback(results[1].formatted_address);
+             }
+          }
+        });
+      }
+      
+      mapApi.setCurrentCoordinates = function(coord){
+          var map = new google.maps.Map(mapApi.el, {
+                center: { lat: coord.lat, lng: coord.lng},
+                zoom: mapApi.zooming
+          });
+      }
+      
+      return mapApi;
   })
   .factory('oneDayTripUtils',function(){
       var utils = {};
@@ -50,8 +75,8 @@ angular.module('OneDayTrip.services', []).
           },
           getTopics:function(){
              return [
-                        {'key':1,'text':'History'},
-                        {'key':2,'text':'Shopping'}
+                        {'key':'HISTORY','text':'History'},
+                        {'key':'SHOPPING','text':'Shopping'}
                     ];
           }
       }

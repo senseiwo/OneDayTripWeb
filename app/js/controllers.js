@@ -34,16 +34,21 @@ angular.module('OneDayTrip.controllers', [])
         
         var topics = [];
         angular.forEach($scope.selected_topics, function(val){
-            topics.push( val.text);
+            topics.push(val.key);
         });
         
-        var query= oneDayTripUtils.buildQueryString({
+        var query = oneDayTripUtils.buildQueryString({
             activity:activity,
             topics:topics.join(','),
             budget:budgets.join(',')
         });
-
         var data = oneDayTripFakeData.getFakePoints();
         console.log(data)
+        
+    }
+})
+.controller('mapController',function($scope, oneDayTripMapApi){
+    $scope.initMap = function(coord){
+        oneDayTripMapApi.setCurrentCoordinates(coord);
     }
 })
