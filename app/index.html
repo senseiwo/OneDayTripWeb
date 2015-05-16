@@ -13,6 +13,9 @@
     <script src="libs/jquery-1.11.3.min.js"></script>
     <script src="libs/bootstrap.min.js"></script>
     <script src="libs/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
     
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlajl3PZJqKw3hsOqHFwog04U1wsHS_Jw"></script>
     <script type="text/javascript">
@@ -28,7 +31,7 @@
     </script>
   
   </head>
-  <body>
+  <body ng-app="OneDayTripApp" ng-controller="tripsController">
       <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -90,11 +93,9 @@
         
         <div class="row">
             <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">My trip</div>
-                    <div class="panel-body">
-                        
-                    </div>
+		<div class="list-group">
+                   <a href="#" class="list-group-item active">My Trips</a>
+  		   <a href="#" ng-repeat="trip in tripList" class="list-group-item">{{trip.name}}</a>
                 </div>
             </div>
             <div class="col-md-8">
