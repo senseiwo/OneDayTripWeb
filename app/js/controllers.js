@@ -1,17 +1,15 @@
 angular.module('OneDayTrip.controllers', [])
-.controller('tripsController', function($scope, oneDayTripHttpApi,oneDayTripFakeData) {
-
-//    oneDayTripHttpApi.getTrips().success(function(resp) {
-//        //$scope = response.????
-//    })
-    $scope.tripList = oneDayTripFakeData.getFakePoints();
-    
+.controller('tripsController', function($scope, oneDayTripHook) {
+    oneDayTripHook.register('data_arrived',function(data){
+        $scope.tripList = data;
+        return true;
+    });
   }
 )
 .controller('paramsController',function($scope, oneDayTripData, 
                                                 oneDayTripUtils,
                                                 start_coord,
-                                                oneDayTripContext,
+                                                oneDayTripHook,
                                                 oneDayTripMapApi,
                                                 oneDayTripFakeData){
     
@@ -41,12 +39,9 @@ angular.module('OneDayTrip.controllers', [])
         angular.forEach($scope.selected_topics, function(val){
             topics.push(val.key);
         });
-
-        var data = oneDayTripFakeData.getFakePoints();
-        oneDayTripContext.setCurrentTrips(data);
-        console.log(data)
-        drawRoute(data)
-
+        
+        oneDayTripHook.call('data_arrived',oneDayTripFakeData.getFakePoints());
+        
         oneDayTripMapApi.getLocationNameByCoordinate(start_coord,function(result){
             var query = oneDayTripUtils.buildQueryString({
                 activity:activity,
@@ -56,6 +51,12 @@ angular.module('OneDayTrip.controllers', [])
                 budget:budgets.join(',')
             });
             
+            var coords = [
+              { lat: 47.6677292, lng: -122.37728820000001},
+              { lat: 42.496403,  lng: -124.413128},
+              { lat: 32.715738,  lng: -117.16108380000003}
+            ];
+            oneDayTripMapApi.drawPaths(coords);
         })
     }
 
@@ -63,8 +64,12 @@ angular.module('OneDayTrip.controllers', [])
         console.log("ev: " + $event)
     }
 })
-.controller('mapController',function($scope, oneDayTripMapApi,start_coord){
-    $scope.initMap = function(coord){
+.controller('mapController',function($scope,oneDayTripHook, oneDayTripMapApi,start_coord){
+    oneDayTripHook.register('data_arrived',function(data){
+        return true;
+    });
+    
+    $scope.initMap = function(){
         oneDayTripMapApi.setCurrentCoordinates(start_coord);
     }
 })
