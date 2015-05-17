@@ -3,11 +3,8 @@ angular.module('OneDayTrip.services', []).
 
     var http = {};
 
-    http.getTrips = function() {
-      return $http({
-        method: 'GET',
-        url: 'url'
-      });
+    http.getTrips = function(query) {
+      return $http.get('/trips?'+query)
     }
     
     return http;
